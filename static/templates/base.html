@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %}<!-- title!! -->{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+  <div class="container">
+      <main class="main">
+        {% block content %}{% endblock %}
+      </main>
+  </div>
+</body>
+</html>

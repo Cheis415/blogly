@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %} Currency Converter {% endblock %}
+
+{% block content %}
+<div class="container" id="container-result">
+
+  <h2 class="title">Currency Converter</h2><br>
+  {% for msg in get_flashed_messages() %}
+  <p>{{ msg }}</p>
+  {% endfor %}
+
+  <form action="/save_data" method="POST" class="form">   
+  
+    <label>First Name:</label><br>
+    <input type="text" id="first_name" name="first_name" placeholder="Enter a first name" class="input"><br>
+    
+    <label>Last Name:</label><br>
+    <input type="text" id="last_name" name="last_name" placeholder="Enter a last name" class="input"><br>
+    
+    <label>image URL:</label><br>
+    <input type="url" id="url" name="url" placeholder='Provide an image of this user' class="input"><br>
+    <br><br><br>
+    <button class="button" id="convert-button"><br>
+      Convert
+    </button>
+  </form>
+</div>
+
+{% endblock %}

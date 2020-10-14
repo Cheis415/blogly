@@ -26,4 +26,3 @@ class User(db.Model):
     img_url = db.Column(db.String(200),
                         nullable=False,
                         default="/static/blank-profile-picture-973460_960_720.webp")           
-story = db.relationship("Story", backref='users')
