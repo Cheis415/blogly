@@ -41,12 +41,13 @@ def create_user():
 
     return redirect('/')
 
-@app.route('/<int:id>')
+@app.route('/<int:id>/<int:post.id>')
 def get_user_detail(id):
     
     user = User.query.get_or_404(id)
+    posts = posts.query.get_or_404(post.id)
     
-    return render_template('user_detail.html', user=user)
+    return render_template('user_detail.html', user=user, posts=posts)
 
 
 
@@ -83,3 +84,4 @@ def users_destroy(id):
     db.session.commit()
 
     return redirect('/')
+
