@@ -6,11 +6,13 @@
 <div class="container" id="container-result">
 
   <h2 class="title">Users</h2><br>
+  <form class="form_user" id="form_user">
   <ul>
     {% for use in user %}
-    <li>{{ use.first_name }} {{use.last_name}}</li>
+    <li name="u_name"><a href="/user_detail.html" type="text/html">{{ use.first_name }} {{use.last_name}}</a></li>
     {% endfor %}
   </ul><br>
+  </form>
   
   <form action="/create" method="" class="form">   
     <button name="add_btn" class="button" id="add_user_button">

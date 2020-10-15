@@ -17,6 +17,7 @@ db.create_all()
 
 @app.route("/")
 def take_home():
+    
     user = User.query.all()
     return render_template("/users.html", user=user)
 
@@ -38,3 +39,10 @@ def create_user():
     db.session.commit()
 
     return redirect("/")
+
+@app.route("/")
+def get_user_detail():
+    
+    u_name = request.args.get("u_name")
+    
+    return render_template("/user_detail.html", u_name=u_name)
