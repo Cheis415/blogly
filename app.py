@@ -90,14 +90,11 @@ def users_destroy(id):
 def create_post(id):
 
     user = User.query.get_or_404(id)
-    post = Post.query.get_or_404(id)
-    
 
-    return render_template('create_post.html', user=user, post=post)
+    return render_template('create_post.html', user=user)
 
-@app.route()
 
-@app.route('/<int:id>', methods=['POST'])
+@app.route('/<int:id>/create_post', methods=['POST'])
 def post_post(id):
 
     user = User.query.get_or_404(id)
@@ -105,11 +102,9 @@ def post_post(id):
     content = request.form['content']
     post = Post(title=title, content=content)
 
-
-
     db.session.add(post)
     db.session.commit()
 
-    return redirect('/<int:id>')
+    return redirect('/update_post')
 
 

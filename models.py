@@ -23,7 +23,7 @@ class User(db.Model):
                     nullable=False)
     last_name = db.Column(db.String(50),
                     nullable=False)
-    img_url = db.Column(db.String(500),
+    img_url = db.Column(db.String(5000),
                     nullable=False,
                     default="/static/blank-profile-picture-973460_960_720.webp")
 

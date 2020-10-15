@@ -8,15 +8,28 @@
 <body>
     <h1>Add Post for {{user.first_name}} {{user.last_name}}</h1>
     <form name="title" action="/{{user.id}}/user_detail" method="post">
-      <label for="title"> Title
-      <input name="title" type="text">
-      </label>
+      <ul>
+       
+       <li> 
+        <label for="title"> Title
+        <input name="title" type="text">
+        </label> 
+      </li>
+      <br><br>
+
+      <li>
       <label for="content">Content
         <textarea name="content" id="content" cols="30" rows="10">
         </textarea>
+      </li>
+      <br><br>
+      
+      <li>  
         <button type="reset">Cancel</button>
         <button type="submit">Add</button>
       </label>
+      </li>
+      </ul>
     </form>
 </body>
 </html>

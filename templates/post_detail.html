@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+</head>
+<body>
+  <h1>{{post.title}}</h1>
+    <p>
+      {{post.content}}
+    </p>
+    <p>By {{user.first_name}} {{user.last_name}}</p>
+    <form method="POST" action="/{{user.id}}">  
+    <button class="cancel_button" name="cancel">Cancel</button>
+    </form><br><br>
+    
+    <form method="GET" action="/{{user.id}}/post_edit">
+    <button class="edit_button" name="edit">Edit</button>
+    </form>
+    
+    <form method="POST" action="/{{user.id}}">
+    <button class="delete_button" name="delete">Delete</button>
+    </form>  
+    
+  
+</body>
+</html>
