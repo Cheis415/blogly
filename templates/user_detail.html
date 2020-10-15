@@ -6,10 +6,13 @@
     <title>User-detail</title>
 </head>
 <body>
-    <h3>User Detail Page</h3>
-    <img class="profile_pic" src={{user.img_url}} alt="profile pic">
-    <h1>{{user.first_name}} {{user.last_name}}</h1>
+  <img class="profile_pic" src={{user.img_url}} alt="profile pic">
+  <h1>{{user.first_name}} {{user.last_name}}</h1>
+    <form method="GET" action="/{{user.id}}/edit">  
     <button class="edit_btn" name="edit">Edit</button>
+    </form><br><br>
+    <form method="POST" action="/{{user.id}}/delete">
     <button class="delete" name="delete">Delete</button>
+    </form>
 </body>
 </html>

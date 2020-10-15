@@ -17,12 +17,12 @@ class User(db.Model):
     __tablename__ = "user"
 
     id = db.Column(db.Integer,
-                   primary_key=True,
-                   autoincrement=True)
+                    primary_key=True,
+                    autoincrement=True)
     first_name = db.Column(db.String(50),
-                     nullable=False)
+                    nullable=False)
     last_name = db.Column(db.String(50),
-                     nullable=False)
+                    nullable=False)
     img_url = db.Column(db.String(200),
-                        nullable=False,
-                        default="/static/blank-profile-picture-973460_960_720.webp")           
+                    nullable=False,
+                    default="/static/blank-profile-picture-973460_960_720.webp")           

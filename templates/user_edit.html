@@ -6,16 +6,31 @@
     <title>User-edit</title>
 </head>
 <body>
-    <h3>User Edit Page</h3>
-    <h1>Edit a user</h1>
-    <form action="/users" method="post"></form>
-    <input name="first" type="text">
-    <label for="last">Last Name</label>
-    <input name="last" type="text">
-    <label for="first">First Name</label>
-    <input name="img" type="url">
-    <label for="img">Image URL</label>
-    <button class="cancel" type="reset">Cancel</button>
-    <button class="save" type="submit">Save</button>
+  <h1>Edit a user</h1>
+    <form method="POST" class="form"> 
+    <ul> 
+      <li>
+        <label for="first_name">First Name:</label><br>
+        <input type="text" id="first_name" name="first_name" placeholder="Enter a first name" class="input"
+        value="{{ user.first_name }}"><br>
+      </li>
+      <li>
+        <label for="last_name">Last Name:</label><br>
+        <input type="text" id="last_name" name="last_name" placeholder="Enter a last name" class="input"
+        value="{{ user.last_name }}"><br>
+      </li>
+      <li>
+        <label for="url">image URL:</label><br>
+        <li><input type="url" id="url" name="url" placeholder='Provide an image of this user' class="input"
+        value="{{ user.img_url }}"></li>
+      </li>
+      <li>
+        <a href="/" class="button">Cancel</a>
+        <button type="submit" class="button" id="edit-button"><br>
+          Save
+        </button>
+      </li>
+    </ul> 
+  </form>
 </body>
 </html>

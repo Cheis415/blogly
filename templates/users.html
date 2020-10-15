@@ -9,7 +9,7 @@
   <form class="form_user" id="form_user">
   <ul>
     {% for use in user %}
-    <li name="u_name"><a href="/user_detail.html" type="text/html">{{ use.first_name }} {{use.last_name}}</a></li>
+    <li><a href="/{{use.id}}">{{ use.first_name }} {{use.last_name}}</a></li>
     {% endfor %}
   </ul><br>
   </form>

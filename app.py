@@ -15,34 +15,71 @@ connect_db(app)
 db.create_all()
 
 
-@app.route("/")
+@app.route('/')
 def take_home():
     
     user = User.query.all()
-    return render_template("/users.html", user=user)
+    return render_template('users.html', user=user)
 
 
-@app.route("/create")
+@app.route('/create')
 def go_create():
 
-    return render_template("/create.html")
+    return render_template('create.html')
 
 
-@app.route("/create", methods=["POST"])
+@app.route('/create', methods=['POST'])
 def create_user():
 
-    first = request.form["first_name"]
-    last = request.form["last_name"]
-    url = request.form["url"] if request.form["url"] else None
+    first = request.form['first_name']
+    last = request.form['last_name']
+    url = request.form['url'] if request.form['url'] else None
     user = User(first_name=first, last_name=last, img_url=url)
+    
     db.session.add(user)
     db.session.commit()
 
-    return redirect("/")
+    return redirect('/')
 
-@app.route("/")
-def get_user_detail():
+@app.route('/<int:id>')
+def get_user_detail(id):
     
-    u_name = request.args.get("u_name")
+    user = User.query.get_or_404(id)
     
-    return render_template("/user_detail.html", u_name=u_name)
+    return render_template('user_detail.html', user=user)
+
+
+
+@app.route('/<int:id>/edit')
+def edit_user_detail(id):
+    
+    user = User.query.get_or_404(id)
+    
+    return render_template('user_edit.html', user=user)
+
+
+@app.route('/<int:id>/edit', methods=['POST'])
+def update_user_detail(id):
+    
+    user = User.query.get_or_404(id)
+
+    user.first_name = request.form['first_name']
+    user.last_name = request.form['last_name']
+    user.img_url = request.form['url']
+    
+    db.session.add(user)
+    db.session.commit()
+    
+    return redirect('/')
+
+
+@app.route('/<int:id>/delete', methods=["POST"])
+def users_destroy(id):
+    """Handle form submission for deleting an existing user"""
+
+    user = User.query.get_or_404(id)
+
+    db.session.delete(user)
+    db.session.commit()
+
+    return redirect('/')
