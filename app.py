@@ -1,7 +1,7 @@
 """Blogly application."""
 
 from flask import Flask, render_template, redirect, request
-from models import db, connect_db, User
+from models import db, connect_db, User, Post
 from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
@@ -19,6 +19,7 @@ db.create_all()
 def take_home():
     
     user = User.query.all()
+
     return render_template('users.html', user=user)
 
 
@@ -41,13 +42,12 @@ def create_user():
 
     return redirect('/')
 
-@app.route('/<int:id>/<int:post.id>')
+@app.route('/<int:id>')
 def get_user_detail(id):
     
     user = User.query.get_or_404(id)
-    posts = posts.query.get_or_404(post.id)
     
-    return render_template('user_detail.html', user=user, posts=posts)
+    return render_template('user_detail.html', user=user)
 
 
 
