@@ -9,6 +9,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogly'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = 'secret_key'
+app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
@@ -61,16 +62,16 @@ def edit_user_detail(id):
 
 @app.route('/<int:id>/edit', methods=['POST'])
 def update_user_detail(id):
-    
+
     user = User.query.get_or_404(id)
 
     user.first_name = request.form['first_name']
     user.last_name = request.form['last_name']
     user.img_url = request.form['url']
-    
+
     db.session.add(user)
     db.session.commit()
-    
+
     return redirect('/')
 
 
@@ -84,4 +85,31 @@ def users_destroy(id):
     db.session.commit()
 
     return redirect('/')
+
+@app.route('/<int:id>/create_post')
+def create_post(id):
+
+    user = User.query.get_or_404(id)
+    post = Post.query.get_or_404(id)
+    
+
+    return render_template('create_post.html', user=user, post=post)
+
+@app.route()
+
+@app.route('/<int:id>', methods=['POST'])
+def post_post(id):
+
+    user = User.query.get_or_404(id)
+    title = request.form['title']
+    content = request.form['content']
+    post = Post(title=title, content=content)
+
+
+
+    db.session.add(post)
+    db.session.commit()
+
+    return redirect('/<int:id>')
+
 

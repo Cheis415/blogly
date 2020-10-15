@@ -20,11 +20,13 @@
     <ul>
       {% if user.posts %}
       {% for post in user.posts %}
-      <li><a href="/{{post.id}}">{{post.title}}</a></li>
+      <li><a href="/{{post.id}}/">{{post.title}}</a></li>
       {% endfor %}
       {% endif %}
     </ul><br>
-      <button id="post_button" class="button">Add post</button>
+        <form name="but" action="/{{user.id}}/create.html" method="post">
+            <button id="post_button" class="button">Add post</button>
+        </form>
     </form>    
 </body>
 </html>
