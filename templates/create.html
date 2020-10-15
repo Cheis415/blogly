@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} Create User! {% endblock %}
+
+{% block content %}
+<div class="container" id="container-result">
+
+
+  <form name="user" action="/create" method="POST" class="form"> 
+    <ul> 
+      <li>
+        <label for="first_name">First Name:</label><br>
+        <input type="text" id="first_name" name="first_name" placeholder="Enter a first name" class="input"><br>
+      </li>
+      <li>
+        <label for="last_name">Last Name:</label><br>
+        <input type="text" id="last_name" name="last_name" placeholder="Enter a last name" class="input"><br>
+      </li>
+      <li>
+        <label for="url">image URL:</label><br>
+        <li><input type="url" id="url" name="url" placeholder='Provide an image of this user' class="input"></li>
+      </li>
+      <li>
+        <button class="button" id="convert-button"><br>
+          Create!
+        </button>
+      </li>
+    </ul> 
+  </form>
+</div>
+
+{% endblock %}
